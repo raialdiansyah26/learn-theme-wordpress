@@ -6,6 +6,12 @@
         <?php while ( have_posts() ) : the_post(); ?>
 
     <article>
+        <?php if ( has_post_thumbnail() ) : ?>
+            <div class="post-thumbnail">
+                <?php the_post_thumbnail("medium"); ?>
+            </div>
+        <?php endif; ?>
+
         <a href="<?php the_permalink() ?>">
             <?php the_title(); ?>
         </a>

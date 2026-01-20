@@ -15,3 +15,10 @@ header {
   color: #fff;
   padding: 20;
 }
+
+.post-thumbnail,
+.single-thumbnail {
+  width: 100%;
+  height: auto;
+  margin-bottom: 20px;
+}
