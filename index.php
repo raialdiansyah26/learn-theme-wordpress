@@ -1,33 +1,42 @@
 <?php get_header(); ?>
 
 <main>
+    <div class="post-list">
     
-    <?php if ( have_posts() ) : ?>
-        <?php while ( have_posts() ) : the_post(); ?>
+        <?php
+        if ( have_posts() ) {
+            while ( have_posts() ) {
+                the_post();
+                ?>
 
-    <article>
-        <?php if ( has_post_thumbnail() ) : ?>
-            <div class="post-thumbnail">
-                <?php the_post_thumbnail("medium"); ?>
-            </div>
-        <?php endif; ?>
+                <article class="post-item">
 
-        <a href="<?php the_permalink() ?>">
-            <?php the_title(); ?>
-        </a>
-        
-        <div>
-            <?php the_content(); ?>
-        </div>
-    </article>
+                    <?php if ( has_post_thumbnail() ) { ?>
+                        <div class="post-thumbnail">
+                            <?php the_post_thumbnail( 'medium' ); ?>
+                        </div>
+                    <?php } ?>
 
-    <hr>
+                    <h2 class="post-title">
+                        <a href="<?php the_permalink(); ?>">
+                            <?php the_title(); ?>
+                        </a>
+                    </h2>
 
-        <?php endwhile; ?>
-    <?php else: ?>
-        <p>Tidak ada konten</p>
-    <?php endif ?>
+                    <div class="post-excerpt">
+                        <?php the_excerpt(); ?>
+                    </div>
 
+                </article>
+
+                <?php
+            }
+        } else {
+            echo '<p>Tidak ada konten</p>';
+        }
+        ?>
+
+    </div>
 </main>
 
 <?php get_footer(); ?>

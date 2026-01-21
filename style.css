@@ -18,7 +18,28 @@ header {
 
 .post-thumbnail,
 .single-thumbnail {
-  width: 100%;
+  max-width: 100%;
   height: auto;
   margin-bottom: 20px;
+}
+
+.post-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.post-item {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.post-title a {
+  text-decoration: none;
+  color: #000;
+}
+
+.post-title a:hover {
+  text-decoration: underline;
 }
