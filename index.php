@@ -63,6 +63,16 @@ get_header();
 
         </div>
 
+        <div class="pagination">
+            <?php
+            the_posts_pagination( array (
+                'mide_size' => 2,
+                'prev_text' => '« Sebelumnya',
+                'next_text' => 'Berikutnya »',
+            ));
+            ?>
+        </div>
+
     </div>
 
     <?php get_sidebar(); ?>

@@ -1,14 +1,14 @@
 <?php get_header() ?>
 
 <main>
-
+    <div style="margin: 0 auto;width: 50%;display:block;background: red;">
     <?php if ( have_posts() ) :?>
         <?php while ( have_posts() ) : the_post(); ?>
 
         <article>
             <?php if ( has_post_thumbnail() ) : ?>
                 <div class="single-thumbnail">
-                    <?php the_post_thumbnail("large"); ?>
+                    <?php the_post_thumbnail("medium"); ?>
                 </div>
             <?php endif; ?>
 
@@ -26,6 +26,7 @@
 
         <?php endwhile ?>
     <?php endif ?>
+</div>
 
 </main>
 

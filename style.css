@@ -16,6 +16,22 @@ header {
   padding: 20;
 }
 
+.menu ul {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 30px;
+}
+
+.menu ul li {
+  list-style: none;
+  margin-left: 20px;
+}
+
+.menu ul li a {
+  text-decoration: none;
+  color: white;
+}
+
 .post-thumbnail,
 .single-thumbnail {
   max-width: 100%;
@@ -62,4 +78,24 @@ header {
 .widget-title {
   font-size: 18px;
   margin-bottom: 10px;
+}
+
+.pagination {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.pagination .page-numbers {
+  display: inline-block;
+  padding: 8px 12px;
+  margin: 0 4px;
+  background: #eee;
+  text-decoration: none;
+  border-radius: 4px;
+  color: #000;
+}
+
+.pagination .current {
+  background: #333;
+  color: #fff;
 }
