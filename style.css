@@ -99,3 +99,12 @@ header {
   background: #333;
   color: #fff;
 }
+
+/* archive */
+.archive-header {
+  margin-bottom: 30px;
+}
+
+.archive-title {
+  font-size: 3rem;
+}

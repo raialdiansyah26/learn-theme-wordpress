@@ -1,7 +1,7 @@
 <?php get_header() ?>
 
 <main>
-    <div style="margin: 0 auto;width: 50%;display:block;background: red;">
+    <div style="margin: 0 auto;width: 50%;display:block;">
     <?php if ( have_posts() ) :?>
         <?php while ( have_posts() ) : the_post(); ?>
 
