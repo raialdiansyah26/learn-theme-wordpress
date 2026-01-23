@@ -102,7 +102,7 @@ function theme_pertama_customize_register( $wp_customize ) {
     ) );
 
     // CONTROL: Text input
-    $wp_customize->add_control( 'footer_text_control', array(
+    $wp_customize->add_control( 'footer_text', array(
         'label'   => 'Teks Footer',
         'section' => 'theme_pertama_section',
         'type'    => 'text',
@@ -120,6 +120,24 @@ function theme_pertama_customizer_css() {
         body {
             color: <?php echo get_theme_mod( 'primary_color', '#333333' ); ?>;
         }
+    </style>
     <?php
 }
 add_action( 'wp_head', 'theme_pertama_customizer_css' );
+
+
+function theme_pertama_register_cpt() {
+
+    register_post_type('portfolio', array(
+        'labels'   => array(
+            'name' => 'Portfolio',
+            'singular_name' => 'Portfolio',
+        ),
+        'public'   => true,
+        'has_archive' => true,
+        'menu_icon' => 'dashicons-portfolio',
+        'supports'  => array('title', 'editor', 'thumbnail'),
+    ));
+
+}
+add_action( 'init', 'theme_pertama_register_cpt' );

@@ -1,3 +1,2 @@
-<footer>
-    <p><?php echo date("Y"); ?> - Theme Pertama saya</p> 
-</footer>
+
+    <p><?php echo get_theme_mod( 'footer_text', 'Copyright ©') ?></p> 
