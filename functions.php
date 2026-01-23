@@ -63,3 +63,63 @@ function theme_pertama_widgets() {
 
 // Hook agar Wordpress mendaftarkan widget
 add_action('widgets_init', 'theme_pertama_widgets');
+
+
+/*
+ * Theme Customizer
+ */
+function theme_pertama_customize_register( $wp_customize ) {
+
+    // SECTION
+    $wp_customize->add_section( 'theme_pertama_section', array(
+        'title'    => 'Pengaturan Tema',
+        'priority' => 30,
+    ) );
+
+    // SETTING: Warna utama
+    $wp_customize->add_setting( 'primary_color', array(
+        'default'   => '#333333',
+        'transport' => 'refresh',
+    ) );
+
+    // CONTROL: Color Picker
+    $wp_customize->add_control(
+        new WP_Customize_Color_Control(
+            $wp_customize,
+            'primary_color_control',
+            array(
+                'label'   => 'Warna Utama',
+                'section' => 'theme_pertama_section',
+                'settings'=> 'primary_color',
+            )
+        )
+    );
+
+    // SETTING: Teks footer
+    $wp_customize->add_setting( 'footer_text', array(
+        'default'   => 'Copyright © ' . date('Y'),
+        'transport' => 'refresh',
+    ) );
+
+    // CONTROL: Text input
+    $wp_customize->add_control( 'footer_text_control', array(
+        'label'   => 'Teks Footer',
+        'section' => 'theme_pertama_section',
+        'type'    => 'text',
+    ) );
+}
+add_action( 'customize_register', 'theme_pertama_customize_register' );
+
+
+/*
+*Apply customizer style
+*/
+function theme_pertama_customizer_css() {
+    ?>
+    <style>
+        body {
+            color: <?php echo get_theme_mod( 'primary_color', '#333333' ); ?>;
+        }
+    <?php
+}
+add_action( 'wp_head', 'theme_pertama_customizer_css' );
