@@ -7,6 +7,7 @@ Template Name: Full Width Page
 <?php get_header(); ?>
 
 <main style="width:100%; background:blue; padding:40px">
+    
 
 <?php if ( have_posts() ) : ?>
     <?php while ( have_posts() ) : the_post(); ?>

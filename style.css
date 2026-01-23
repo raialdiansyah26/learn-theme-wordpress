@@ -126,3 +126,20 @@ header {
 .comment-author {
   font-weight: bold;
 }
+
+/* 404 */
+.error-404 {
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.error-404 h1 {
+  font-size: 80px;
+  margin-bottom: 10px;
+}
+
+.error-404 a {
+  display: inline-block;
+  margin-top: 20px;
+  text-decoration: none;
+}
