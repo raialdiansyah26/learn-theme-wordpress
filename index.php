@@ -73,6 +73,46 @@ get_header();
             ?>
         </div>
 
+        <!-- portfolio -->
+         <?php 
+         $args = array(
+            'post_type'      => 'portfolio',
+            'posts_per_page' => 3,
+         );
+
+         $portfolio_query = new WP_Query($args);
+        ?>
+
+        <?php if ( $portfolio_query->have_posts() ) : ?>
+
+        <section class="home-portfolio">
+            <h2>Portfolio terbaru</h2>
+
+            <div class="portfolio-grid">
+
+            <?php while ( $portfolio_query->have_posts() ) : $portfolio_query->the_post(); ?>
+
+            <article class="portfolio-item">
+                <a href="<?php the_permalink(); ?>">
+
+                    <?php if ( has_post_thumbnail() ) : ?>
+                        <?php the_post_thumbnail('medium'); ?>
+                    <?php endif; ?>
+
+                    <h3><?php the_title(); ?></h3>
+
+                </a>
+            </article>
+
+            <?php endwhile; ?>
+
+            </div>
+        </section>
+
+        <?php endif; ?>
+
+        <?php wp_reset_postdata(); ?>
+
     </div>
 
     <?php get_sidebar(); ?>
