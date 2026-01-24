@@ -141,3 +141,21 @@ function theme_pertama_register_cpt() {
 
 }
 add_action( 'init', 'theme_pertama_register_cpt' );
+
+// Register taxonomy untuk Portfolio
+function mytheme_register_portfolio_taxonomy() {
+
+    register_taxonomy(
+        'portfolio_category',
+        'portfolio',
+        array(
+            'label' => 'Portfolio Category',
+            'rewrite' => array('slug' => 'portfolio_category'),
+            'hierarchical' => true, //seperti category (bukan tag)
+            'show_admin_column' => true,
+            'show_in_rest' => true,
+        )
+    );
+
+}
+add_action('init', 'mytheme_register_portfolio_taxonomy');
