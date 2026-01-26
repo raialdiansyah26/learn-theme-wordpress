@@ -143,3 +143,20 @@ header {
   margin-top: 20px;
   text-decoration: none;
 }
+
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.portfolio-item {
+  border: 1px solid #ddd;
+  padding: 15px;
+  text-align: center;
+}
+
+.portfolio-thumb img {
+  max-width: 100%;
+  height: auto;
+}
