@@ -137,6 +137,7 @@ function theme_pertama_register_cpt() {
         'has_archive' => true,
         'menu_icon' => 'dashicons-portfolio',
         'supports'  => array('title', 'editor', 'thumbnail'),
+        'taxonomies' => array('portfolio_category'),//Memunculkan kategori posts portfolio ketika di klik kategorinya.
     ));
 
 }

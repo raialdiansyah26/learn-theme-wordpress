@@ -4,6 +4,28 @@
 
     <h1>Portfolio</h1>
 
+    <?php
+    $terms = get_terms(array(
+        'taxonomy'   => 'portfolio_category',
+        'hide_empty' => true,
+    ));
+    ?>
+
+    <?php if ( ! empty($terms) && ! is_wp_error($terms) ) : ?>
+        <ul class="portfolio-filter">
+            <li><a href="<?php echo get_post_type_archive_link('portfolio'); ?>">All</a></li>
+
+            <?php foreach ( $terms as $term ) : ?>
+                <li>
+                    <a href="<?php echo esc_url( get_term_link($term) ); ?>">
+                        <?php echo esc_html( $term->name ); ?>
+                    </a>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+    <?php endif; ?>
+
+
     <div class="portfolio-grid">
 
     <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
