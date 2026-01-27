@@ -160,3 +160,61 @@ function mytheme_register_portfolio_taxonomy() {
 
 }
 add_action('init', 'mytheme_register_portfolio_taxonomy');
+
+// Tambah Meta Box untuk Portfolio
+function mytheme_add_portfolio_metabox() {
+    add_meta_box(
+        'portfolio_details',
+        'Portfolio Details',
+        'mytheme_portfolio_metabox_callback',
+        'portfolio',
+        'normal',
+        'default'
+    );
+}
+add_action('add_meta_boxes', 'mytheme_add_portfolio_metabox');
+
+function mytheme_portfolio_metabox_callback($post) {
+
+    $client = get_post_meta($post->ID, '_portfolio_client', true);
+    $year   = get_post_meta($post->ID, '_portfolio_year', true);
+    $tools  = get_post_meta($post->ID, '_portfolio_tools', true);
+    ?>
+
+    <p>
+        <label>Client</label><br>
+        <input type="text" name="portfolio_client" value="<?php echo esc_attr($client); ?>" style="width:100%;">
+    </p>
+
+    <p>
+        <label>Tahun</label><br>
+        <input type="text" name="portfolio_year" value="<?php echo esc_attr($year); ?>" style="width:100%;">
+    </p>
+
+    <p>
+        <label>Tools</label><br>
+        <input type="text" name="portfolio_tools" value="<?php echo esc_attr($tools); ?>" style="width:100%;">
+    </p>
+
+    <?php
+}
+
+function mytheme_save_portfolio_meta($post_id) {
+
+    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
+        return;
+    }
+
+    if (isset($_POST['portfolio_client'])) {
+        update_post_meta($post_id, '_portfolio_client', sanitize_text_field($_POST['portfolio_client']));
+    }
+
+    if (isset($_POST['portfolio_year'])) {
+        update_post_meta($post_id, '_portfolio_year', sanitize_text_field($_POST['portfolio_year']));
+    }
+
+    if (isset($_POST['portfolio_tools'])) {
+        update_post_meta($post_id, '_portfolio_tools', sanitize_text_field($_POST['portfolio_tools']));
+    }
+}
+add_action('save_post_portfolio', 'mytheme_save_portfolio_meta');
