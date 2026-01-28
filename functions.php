@@ -179,6 +179,7 @@ function mytheme_portfolio_metabox_callback($post) {
     $client = get_post_meta($post->ID, '_portfolio_client', true);
     $year   = get_post_meta($post->ID, '_portfolio_year', true);
     $tools  = get_post_meta($post->ID, '_portfolio_tools', true);
+    $link  = get_post_meta($post->ID, '_portfolio_link', true);
     ?>
 
     <p>
@@ -194,6 +195,10 @@ function mytheme_portfolio_metabox_callback($post) {
     <p>
         <label>Tools</label><br>
         <input type="text" name="portfolio_tools" value="<?php echo esc_attr($tools); ?>" style="width:100%;">
+    </p>
+    <p>
+        <label>Link</label><br>
+        <input type="text" name="portfolio_link" value="<?php echo esc_attr($link); ?>" style="width:100%;">
     </p>
 
     <?php
@@ -215,6 +220,9 @@ function mytheme_save_portfolio_meta($post_id) {
 
     if (isset($_POST['portfolio_tools'])) {
         update_post_meta($post_id, '_portfolio_tools', sanitize_text_field($_POST['portfolio_tools']));
+    }
+    if (isset($_POST['portfolio_link'])) {
+        update_post_meta($post_id, '_portfolio_link', sanitize_text_field($_POST['portfolio_link']));
     }
 }
 add_action('save_post_portfolio', 'mytheme_save_portfolio_meta');

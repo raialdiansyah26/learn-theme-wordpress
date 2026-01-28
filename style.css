@@ -179,3 +179,18 @@ header {
   background: #000;
   color: #fff;
 }
+
+.portfolio-meta {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+}
+
+.portfolio-meta li {
+  margin-bottom: 6px;
+  font-size: 14px;
+}
+
+.portfolio-btn {
+  background-color: aqua;
+}

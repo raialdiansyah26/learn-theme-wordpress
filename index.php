@@ -101,6 +101,33 @@ get_header();
 
                     <h3><?php the_title(); ?></h3>
 
+                    <?php
+                    $client = get_post_meta(get_the_ID(), '_portfolio_client', true);
+                    $year   = get_post_meta(get_the_ID(), '_portfolio_year', true);
+                    $tools  = get_post_meta(get_the_ID(), '_portfolio_tools', true);
+                    $link  = get_post_meta(get_the_ID(), '_portfolio_link', true);
+
+                    ?>
+
+                    <?php if ($client || $year || $tools || $link   ) : ?>
+                        <ul class="portfolio-meta">
+                            <?php if ($client) : ?>
+                                <li><strong>Client:</strong> <?php echo esc_html($client); ?></li>
+                            <?php endif; ?>
+
+                            <?php if ($year) : ?>
+                                <li><strong>Tahun:</strong> <?php echo esc_html($year); ?></li>
+                            <?php endif; ?>
+
+                            <?php if ($tools) : ?>
+                                <li><strong>Tools:</strong> <?php echo esc_html($tools); ?></li>
+                            <?php endif; ?>
+                        </ul>
+                            <?php if ($link) : ?>
+                                <a href="<?php echo esc_html($link); ?>" class="portfolio-btn"><strong>Details</strong></a>
+                            <?php endif; ?>
+                    <?php endif; ?>
+
                 </a>
             </article>
 
